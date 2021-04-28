@@ -1,8 +1,7 @@
 {
   "name": "weather-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,5 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "request": "^2.88.2"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
