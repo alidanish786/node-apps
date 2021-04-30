@@ -1,29 +1,27 @@
-const request=require('request')
+const forecast = require('./utils/forecast')
 const geoCode=require('./utils/geocode')
+const chalk=require('chalk')
 
-// const url="http://api.weatherstack.com/current?access_key=f3212a27055c3e424f9062bb6bddbd0c&query=&units=f"
+const loc=process.argv[2];
+//console.log(loc[2])
 
-// request({url:url,json:true},(error,response)=>{
-//     //console.log(response.body.current)
-//     if(error){
-//         console.log('Unable to connect to weather service!')
-//     }
-//     else if(response.body.error){
-//         console.log('Unable to find location')
-//     }
-//     else{
-//         console.log('Current temp is '+resp.temperature+' degrees but feels like it is '+ resp.feelslike+' degrees')
-//     }
-       
-// })
+if(loc!="" && loc!=undefined){
 
-//Geo coding
+    geoCode(loc,(error,data)=>{
+        debugger;
+        console.log('Error:-'+error)
+        console.log('Data:-'+data)
+        console.log('Latitude and longitue are here respectively- ' 
+        +data.latitude +' and '+data.longitude+' and location is '+data.location)
+    
+        forecast(data.latitude,data.longitude, (error, data) => {
+            console.log('Error', error)
+            console.log('Data', data)
+          })
+    })
+    
+}
+else{
+console.log(chalk.red('No parameter provided in command!'))
+}
 
-const mapBoxUrl="https://api.mapbox.com/geocoding/v5/mapbox.places/12undertaker.json?access_token=pk.eyJ1IjoiaGl0bWFuMjAwNiIsImEiOiJja28ybWN2ZjYwM2RnMndtdXd3cHN1OXg5In0.8VpR-poOVftYQB8X2C1arA&limit=1"
-
-geoCode('New Delhi',(error,data)=>{
-    debugger;
-    console.log('Error:-'+error)
-    console.log('Data:-'+data)
-    console.log('Latitude and longitue are here respectively- ' +data.latitude +' and '+data.longitude+' and location is '+data.location)
-})

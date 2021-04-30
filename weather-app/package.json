@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.1",
     "request": "^2.88.2"
   },
-  "devDependencies": {},
   "description": ""
 }
