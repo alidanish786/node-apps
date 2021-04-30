@@ -7,14 +7,14 @@ const loc=process.argv[2];
 
 if(loc!="" && loc!=undefined){
 
-    geoCode(loc,(error,data)=>{
+    geoCode(loc,(error,{location,latitude,longitude})=>{
         debugger;
         console.log('Error:-'+error)
-        console.log('Data:-'+data)
+        //console.log('Data:-'+data)
         console.log('Latitude and longitue are here respectively- ' 
-        +data.latitude +' and '+data.longitude+' and location is '+data.location)
+        +latitude +' and '+longitude+' and location is '+location)
     
-        forecast(data.latitude,data.longitude, (error, data) => {
+        forecast(latitude,longitude, (error, data) => {
             console.log('Error', error)
             console.log('Data', data)
           })
